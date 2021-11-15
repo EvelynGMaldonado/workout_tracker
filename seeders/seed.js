@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/workout', {
+  process.env.MONGODB_myWorkOut || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,

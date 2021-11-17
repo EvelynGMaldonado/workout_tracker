@@ -5,20 +5,28 @@ const db = require('../models');
 const Workout = require('../models/Workout');
 
 router.get('/api/workouts', (req, res) => {
-    Workout.find({})
-    .then(dbWorkouts => {
-        console.log(dbWorkouts);
-        const workouts = dbWorkouts.map(workout => {
-            console.log({workout});
-            const duration = workout.exercises.reduce((acc, next) => {
-                return acc + next.duration;
-            }, 0);
-            return {
-                totalDuration: duration,
-                ...workout.toObject()
-            }
-        })
-        res.json(workouts);
+    Workout.aggregate([
+        {
+            $addFields: {
+                totalDuration: {
+                    $sum: '$exercises.duration',
+                },
+            },
+        },
+    ])
+    .then((dbWorkouts) => {
+        // console.log(dbWorkouts);
+        // const workouts = dbWorkouts.map(workout => {
+        //     console.log({workout});
+        //     const duration = workout.exercises.reduce((acc, next) => {
+        //         return acc + next.duration;
+        //     }, 0);
+        //     return {
+        //         totalDuration: duration,
+        //         ...workout.toObject()
+        //     }
+        // })
+        res.json(dbWorkouts);
     })
     .catch(err => {
         console.log(err);
@@ -42,14 +50,7 @@ router.put("/api/workouts/:id", ({body, params}, res) => {
 });
 
     router.post("/api/workouts", (req, res) => {
-        Workout.create([{
-            $addFields: {
-                totalDuration: {
-                    $sum: '$exercises.duration',
-                },
-            },
-        },
-        ])
+        Workout.create(req.body)
         .then((dbWorkouts) => {
             res.json((dbWorkouts));
         })

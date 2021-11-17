@@ -22,7 +22,7 @@ const myWorkOut = new Schema ({
         weight: {
             type: Number
         },
-        repetitions: {
+        reps: {
             type: Number
         },
         sets: {

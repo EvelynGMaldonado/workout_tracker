@@ -3,7 +3,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 require('dotenv').config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3012;
 
 const db = require("./models");
 const { Router } = require("express");
@@ -22,7 +22,7 @@ app.use(express.static("public"));
 // app.use(require("./controller/pageRoutes"));
 app.use(routes);
 console.log(process.env.MONGODB_URI);
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populatedb", { 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { 
     useNewUrlParser: true,
     useUnifiedToology: true,
     useCreateIndex: true,

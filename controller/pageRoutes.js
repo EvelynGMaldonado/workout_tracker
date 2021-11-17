@@ -1,4 +1,4 @@
-const router = require('express');
+const router = require('express').Router();
 const path = require('path');
 
 //connect my /homepage with my index.html
@@ -24,11 +24,11 @@ router.get('/stats', (req, res) => {
 //connecting my /exercisepage with my excercise.html
 router.get('/exercise', (req, res) => {
     try{
-        res.sendFile(path.join(__dirname, '../public/excercise.html'))
+        res.sendFile(path.join(__dirname, '../public/exercise.html'))
     }
     catch(err) {
         res.status(404).json(err)
     }
 });
 
-module.exports - router;
+module.exports = router;

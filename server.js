@@ -9,6 +9,7 @@ const db = require("./models");
 const { Router } = require("express");
 
 const app = express();
+const routes = require("./controller");
 
 app.use(logger("dev"));
 
@@ -17,9 +18,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-app.use(require("./controller/apiRoutes"));
-app.use(require("./controller/pageRoutes"));
-
+// app.use(require("./controller/apiRoutes"));
+// app.use(require("./controller/pageRoutes"));
+app.use(routes);
+console.log(process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populatedb", { 
     useNewUrlParser: true,
     useUnifiedToology: true,

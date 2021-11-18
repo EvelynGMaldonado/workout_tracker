@@ -42,5 +42,5 @@ If you have any questions, please contact me to the information listed below.
 * Link to the GitHub Repository:
 [Workout Tracker](https://github.com/EvelynGMaldonado/workout_tracker)
 
-* Url to the deployeed application:
-[Workout Tracker]()
+* Url to the deployed application:
+[Workout Tracker](https://fitness-tracker-egm.herokuapp.com/)

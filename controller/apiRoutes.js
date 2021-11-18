@@ -16,16 +16,16 @@ router.get('/api/workouts', (req, res) => {
     ])
     .then((dbWorkouts) => {
         console.log(dbWorkouts);
-        const workouts = dbWorkouts.map(workout => {
-            console.log({workout});
-            const duration = workout.exercises.reduce((acc, next) => {
-                return acc + next.duration;
-            }, 0);
-            return {
-                totalDuration: duration,
-                ...workout.toObject()
-            }
-        })
+        // const workouts = dbWorkouts.map(workout => {
+        //     console.log({workout});
+        //     const duration = workout.exercises.reduce((acc, next) => {
+        //         return acc + next.duration;
+        //     }, 0);
+        //     return {
+        //         totalDuration: duration,
+        //         ...workout.toObject()
+        //     }
+        // })
         res.json(dbWorkouts);
     })
     .catch(err => {

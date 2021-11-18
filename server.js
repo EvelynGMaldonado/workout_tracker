@@ -20,7 +20,7 @@ app.use(express.static("public"));
 
 // app.use(require("./controller/apiRoutes"));
 // app.use(require("./controller/pageRoutes"));
-app.use(routes);
+
 // console.log(process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI|| "mongodb://localhost/workout", { 
     useNewUrlParser: true,
@@ -29,6 +29,7 @@ mongoose.connect(process.env.MONGODB_URI|| "mongodb://localhost/workout", {
     useFindAndModify:false
 });
 
+app.use(routes);
 
 //start the server
 app.listen(PORT, () => {
